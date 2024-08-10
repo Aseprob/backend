@@ -13,10 +13,11 @@ def get_db():
     return g.db
 
 
-def close_db(e):
+def close_db(context):
     """
     disconnects the current db
     """
+    print(context)
     db = g.pop('db', None)
     if db is not None:
         db.client.close()
