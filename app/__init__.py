@@ -1,3 +1,4 @@
+"""Module that starts the app."""
 from flask import Flask
 from flask import jsonify
 
@@ -9,6 +10,9 @@ from .routes import blueprints
 
 
 def create_app():
+    """
+    creates the app
+    """
     app = Flask(__name__)
     app.config.from_object(Config)
 

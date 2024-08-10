@@ -1,7 +1,12 @@
+"""Module providing a global config"""
 import os
+import dataclasses
 
-
+@dataclasses.dataclass
 class Config:
+    """
+    Config class for secrets and what not.
+    """
     SECRET_KEY = os.environ.get('SECRET_KEY', 'your-secret-key')
     MONGO_URI = os.environ.get(
         'MONGO_URI', 'mongodb://localhost:27017/db')
