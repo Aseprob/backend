@@ -1,7 +1,5 @@
 """Module that starts the app."""
-from flask import Flask
-from flask import jsonify
-
+from flask import Flask, jsonify
 
 from config import Config
 
@@ -25,7 +23,7 @@ def create_app():
 
     # Optional: Add any app-wide configurations or initializations here
 
-    @app.route('/')
+    @app.route('/health')
     def home():
         return jsonify({"msg": "If you can reach this, we are healthy!"})
 

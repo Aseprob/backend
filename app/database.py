@@ -1,6 +1,6 @@
 """Module that provides a db service for toher parts of application to use"""
-from pymongo import MongoClient
 from flask import current_app, g
+from pymongo import MongoClient
 
 
 def get_db():
@@ -13,7 +13,7 @@ def get_db():
     return g.db
 
 
-def close_db():
+def close_db(e):
     """
     disconnects the current db
     """
