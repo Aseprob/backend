@@ -8,8 +8,10 @@ def get_db():
     obtains the db
     """
     if 'db' not in g:
-        client = MongoClient(current_app.config['MONGO_URI'])
-        g.db = client.get_default_database()
+        client = MongoClient(current_app.config.get(
+            'MONGO_URI', 'mongodb://localhost:27017'))
+        db_name = current_app.config.get('MONGO_DBNAME', 'db')
+        g.db = client[db_name]
     return g.db
 
 
