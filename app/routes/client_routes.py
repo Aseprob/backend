@@ -6,13 +6,18 @@ from flask import Blueprint, jsonify, request
 
 from app.database import get_db
 from app.models.client import Client
-from app.services.auth import token_required
+from app.services.auth import token_required, token_required_with_context
 
 bp = Blueprint('clients', __name__, url_prefix='/clients')
 
 
 @bp.route('', methods=['GET'])
 @token_required
+# TODO: make search limited to the current user's index_id(s), that way a single user can work on more than one group. 
+# without being able to see othe user's info
+#
+# @token_required_with_context
+# def get_clients(current_user):
 def get_clients():
     """
     Returns all clients
